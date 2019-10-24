@@ -1,0 +1,117 @@
+express起步
+  npm install --save express
+
+修改完代码自动重启
+    使用nodemon第三方命令行工具
+    使用的时候需要独立安装：npm install --global nodemon
+    安装完毕后使用：nodemon app.js
+
+只要是通过nodemon app.js启动的服务，则它会监视你的文件变化，当文件发生变化的时候会自动重启
+
+基本路由
+    路由器：
+        请求方法
+        请求路径
+        请求处理函数
+    get:
+        当你以GET方法请求 / 的时候，执行对应的处理函数
+        app.get('/',function(req,res){
+            res.send('hello')
+        })
+    post:
+        当你以POST方法请求 / 的时候，执行对应的处理函数
+         app.post('/',function(req,res){
+              res.send('hello')
+         })
+
+
+ 在express中配置使用art-template模板引擎
+        1.安装：
+            npm install --save art-template
+            npm install --save express-art-template
+        2.配置：
+            app.engine('html', require('express-art-template'));
+
+        3.使用：
+            app.get('/',function(req,res){
+                //express 默认会去项目中的views目录找index.html
+               res.render('admin/index.html',{
+                       title:'管理系统'
+                   })//默认views目录下
+            })
+         4.如果希望修改默认的views视图渲染存储目录，可以：
+            //如果想要修改默认的views目录，则可以
+            //app.set('views',目录路径) //第一个参数特殊名称必须写成views，第二个写路径
+
+
+
+
+在express获取表单GET请求参数
+        在express内置了一个API,可以直接通过req.qeury来获取
+            req.query
+
+在express获取表单POST请求体数据
+        在express中没有内置获取表单的POST请求的API，需要第三方包：body-parser
+
+        1.安装：
+            npm install --save body-parser
+        2.配置：
+            var express = require('express')
+            //0.引包
+            var bodyParser = require('body-parser')
+
+            var app = express()
+
+            //配置body-parser
+            //只要加入这个配置，则在req请求对象上会多出来一个属性：body
+            //也就是说你可以直接通过req.body来获取表单 POST 请求体数据了
+
+            // parse application/x-www-form-urlencoded
+            app.use(bodyParser.urlencoded({ extended: false }))
+
+            // parse application/json
+            app.use(bodyParser.json())
+
+            app.use(function (req, res) {
+              res.setHeader('Content-Type', 'text/plain')
+              res.write('you posted:\n')
+              //可以通过req.body来获取表单POST请求体数据
+              res.end(JSON.stringify(req.body, null, 2))
+
+              //可以通过req.body来获取表单POST请求体数据
+              console.log(req.body)
+            })
+
+
+文件路径中的 `/`和模块标识中的 `/`：文件模块所属磁盘根目录  C:/  F:/ 几乎不用
+
+
+自己编写的步骤
+    1.处理模板（views）
+    2.配置开放静态资源
+    3.配置模板引擎
+    4.设计路由
+    5.简单路由：/students 渲染静态页出来
+    6.提取路由模块
+    7.由于接下来的一系列操作都需要处理文件数据，所以我们需要封装 Students.js
+    8.先写好 Students.js文件结构
+        查询所有学生列表的Api：find
+        查询单个： findById
+        保存：save
+        更新：updateById
+        删除：deleteById
+    9.实现具体功能
+        通过路由收到请求
+        接收到请求中的数据(get,post)
+            get:    req.query
+            post:   req.body
+        调用数据操作api处理数据
+        根据操作结果给客户端发送响应
+    10.业务功能顺序
+        列表
+        添加
+        编辑
+        删除
+
+    find  findIndex
+

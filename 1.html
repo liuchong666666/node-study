@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var url="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=对象循环方法&oq=foreach%25E7%2594%25A8%25E6%25B3%2595&rsv_pq=9baff321000e1aa9&rsv_t=e429VnY8RaR645NHNm90KqQG0xBxl%2FtgkzxKVGHoiQO3om2lilDmGIYsW%2B0&rqlang=cn&rsv_enter=1&rsv_dl=tb&inputT=8770&rsv_sug3=47&rsv_sug1=25&rsv_sug7=100&rsv_sug2=0&rsv_sug4=9811"
+//    var url=" ?gender=asc&location=123132"
+    function get(url){
+        var obj={};
+        var str = url.split('?')
+        var arr = str[1].split('&')
+        for(var i=0;i<arr.length;i++){
+            var item = arr[i].split('=')
+            obj[item[0]]=item[1]
+        }
+        return obj
+    }
+    console.log(get(url))
+</script>
+</body>
+</html>
