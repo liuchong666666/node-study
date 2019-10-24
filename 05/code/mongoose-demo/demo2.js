@@ -39,13 +39,14 @@ var User = mongoose.model('User', userSchema);
 //************新增************* */
 
 // var admin = new User({
-//   username: '张三',
+//   username: 'admin',
 //   password: '123456',
 //   emial: 'admin@admin.com',
 // });
 
-// //数据持久化
-// admin.save(function(err, ret) {
+// // //数据持久化
+// //admin.save(function(err, ret) {
+// new User.save(function(err, ret) {
 //   if (err) {
 //     console.log('保存失败');
 //   } else {
@@ -64,7 +65,7 @@ var User = mongoose.model('User', userSchema);
 //   }
 // });
 
-/*按条件查 */
+/*按条件查所有 */
 // User.find(
 //   {
 //     username: '张三',
@@ -78,16 +79,71 @@ var User = mongoose.model('User', userSchema);
 //   }
 // );
 
-/*只找匹配的第一个 */
-User.findOne(
+/*findOne按照条件找匹配的第一个 */
+//如果没得条件，会自动查找第一个
+//查不到就是null
+// User.findOne(
+//   {
+//     username: '张三',
+//     password: 123456,
+//   },
+//   (err, ret) => {
+//     if (err) {
+//       console.log('查询失败');
+//     } else {
+//       console.log(ret);
+//     }
+//   }
+// );
+
+//************删除************* */
+////根据条件删除所有
+// User.remove(
+//   {
+//     username: 'admin',
+//   },
+//   (err, ret) => {
+//     if (err) {
+//       console.log('删除失败');
+//     } else {
+//       console.log('删除成功');
+//       console.log(ret);
+//     }
+//   }
+// );
+////根据条件删除一个
+////User.findOneAndRemove(conditions,[options],[callback])
+// User.findOneAndRemove(
+//   {
+//     username: 'admin',
+//   },
+//   (err, ret) => {
+//     if (err) {
+//       console.log('删除失败');
+//     } else {
+//       console.log('删除成功');
+//       console.log(ret);
+//     }
+//   }
+// );
+////根据id删除一个：User.findByIdAndRemove(id,[options],[callback])
+
+//************更新************* */
+//根据条件更新所有
+//Model.update(conditions,doc,[options],[callback])
+//根据指定条件更新一个
+//Model.findOneAndUpdate([conditions],[update],[options],[callback])
+//根据id更新一个，第一个参数id，第二个参数，需要修改的内容，第三个回调函数
+User.findByIdAndUpdate(
+  '5db110e75e1c861bacd09de6',
   {
-    username: '张三',
+    password: '123',
   },
-  (err, ret) => {
+  function(err, ret) {
     if (err) {
-      console.log('查询失败');
+      console.log('更新失敗');
     } else {
-      console.log(ret);
+      console.log('更新成功');
     }
   }
 );
