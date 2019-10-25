@@ -1,2 +1,0 @@
-# node-study
-node-study
