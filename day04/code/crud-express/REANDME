@@ -1,0 +1,27 @@
+express - crud
+
+起步
+模板处理
+
+路由设计
+
+## 路由设计
+
+| 请求方法 |     请求路径     | get 参数 |           post 参数            |       备注       |
+|----------|------------------|----------|--------------------------------|------------------|
+| GET      | /studens         |          |                                | 渲染首页         |
+| GET      | /students/new    |          |                                | 渲染添加学生页面 |
+| POST     | /students/new     |          | name、age、gender、hobbies     | 处理添加学生请求 |
+| GET      | /students/edit   | id       |                                | 渲染编辑页面     |
+| POST     | /students/edit    |          | id、name、age、gender、hobbies | 处理编辑请求     |
+| GET      | /students/delete | id       |                                | 处理删除请求     |
+|          |                  |          |                                |                  |
+
+
+express中判断查询路径（pathname） 不包含?age=123 查询字符串  所以不能通过这个来判断路径
+
+/students
+
+/students?age=123  这种会与上面冲突
+
+/students/edit  这种可以，不冲突

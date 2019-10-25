@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = `
+   "buyerId": "9a9cee115cb24fdf90fe919842beed1d",
+"buyerType": "1",
+"buyerRatio": 0.0,
+"buyerFee": "8.00",
+"buyerMin": "0.00",
+"buyerMax": "1000.00",
+"buyerRemarks": "这是自动化测试用例修改的保证金，默认保证金均为02",
+"sellerId": "17d070edd4cd48029fec5f6434f191ff",
+"sellerType": "1",
+"sellerRatio": 0.0,
+"sellerFee": "9.00",
+"sellerMin": "0.00",
+"sellerMax": "1000.00",
+"sellerRemarks": "这是自动化测试用例修改的保证金，默认保证金均为02",
+    `
+
+    function ge(str) {
+        let array = []
+        let arr1 = []
+        let arr2 = []
+        let arr3 = []
+        var str = str.replace(/\s/g, '')
+        var arr = str.split(',')
+        for (let i = 0; i < arr.length; i++) {
+            var item = arr[i].split(":")
+            array.push(item[0].replace(/\"/g,''))
+        }
+        array.forEach((item,index)=>{
+            if(index<array.length-1){
+            arr1.push(`${item}:string;`)
+            arr2.push(`${item}='',`)
+            arr3.push(`this.${item}=${item};`)
+            }
+        })
+        let arr11 = arr1.join('\n')
+        let arr22 = arr2.join('\n')
+        let arr33 = arr3.join('\n')
+        console.log(arr11)
+        console.log(arr22)
+        console.log(arr33)
+        let strs = `
+        ${arr11}
+        constructor(${arr22})){
+        ${arr33}
+        }
+        `
+        return strs
+    }
+
+    console.log(ge(str))
+</script>
+</body>
+</html>

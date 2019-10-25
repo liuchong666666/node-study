@@ -1,0 +1,8 @@
+设计路由
+    目的      | 请求方法  |     请求路径      | get 参数 |           post 参数            |       备注       |
+渲染首页列表  |   get     |       /           |          |                                |
+渲染添加页面  |   get     |       /add        |          |                                |
+处理添加请求  |   post    |       /add        |          | name、gender、age、hobbies     |
+处理删除请求  |   get     |       /delete     |   id     |                                |
+渲染编辑页面  |   get     |       /edit       |   id     |                                |
+处理编辑请求  |   post    |       /edit       |          |id、name、gender、age、hobbies  |

@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/public/css/dashboard.css" rel="stylesheet">
+    <style>
+        .row{
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+<div></div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="sub-header">编辑成员</h2>
+            <form action="/edit" method="post">
+                <div class="form-group">
+                    <input type="hidden" value="{{student.id}}" name="id">
+                    <label for="exampleInputEmail1">姓名</label>
+                    <input type="text" value="{{student.name}}" name="name" minlength="2" required maxlength="5" class="form-control" id="exampleInputEmail1">
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">年龄</label>
+                    <input type="number" value="{{student.age}}" name="age" minlength="1" required  maxlength="3" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                    <label >性别</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" required value="0"> 男
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender"  required value="1"> 女
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="hobbies">爱好</label>
+                    <input type="text" value="{{student.hobbies}}" minlength="1" required maxlength="60" name="hobbies" class="form-control" id="hobbies">
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
