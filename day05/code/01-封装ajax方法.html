@@ -1,50 +1,61 @@
+<!--
+ * @Author: lc
+ * @Date: 2019-10-25 09:22:21
+ * @Description:
+ -->
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-<script>
-    //注意：凡是需要得到一个函数内部异步操作的结果
-    //      异步：     setTimeout
-    //                 readFile
-    //                 writeFile
-    //                  ajax
-    //                  readdir等等
-    //      往往异步 API 都伴随一个回调函数
-    //      这种情况必须通过：回调函数
+    <script>
+        //注意：凡是需要得到一个函数内部异步操作的结果
+        //      异步：     setTimeout
+        //                 readFile
+        //                 writeFile
+        //                  ajax
+        //                  readdir等等
+        //      往往异步 API 都伴随一个回调函数
+        //      这种情况必须通过：回调函数
 
-    /*
-        var oReq = new XMLHttpRequest();
-        //当请求加载成功之后要调用指定的函数
-        oReq.onload = function(){
-            console.log(oReq.responseText)
-            //如果取不到，可能是缓存问题 清除一下缓存
+        /*
+            var oReq = new XMLHttpRequest();
+            //当请求加载成功之后要调用指定的函数
+            oReq.onload = function(){
+                console.log(oReq.responseText)
+                //如果取不到，可能是缓存问题 清除一下缓存
+            }
+            oReq.open('get','data.json',true)
+            oReq.send()
+
+        */
+
+        function get(url, callback) {
+            var oReq = new XMLHttpRequest();
+            //当请求加载成功之后要调用指定的函数
+            oReq.onload = function () {
+                // 我现在需要得到这里的oReq.responseText
+                //   //通过回调来获取异步操作结果
+                callback(oReq.responseText)
+            }
+            oReq.onerror = function (err) {
+                callback(err)
+            }
+            oReq.open('get', url, true)
+            oReq.send()
         }
-        oReq.open('get','data.json',true)
-        oReq.send()
-
-    */
-
-    function get(url, callback) {
-        var oReq = new XMLHttpRequest();
-        //当请求加载成功之后要调用指定的函数
-        oReq.onload = function () {
-            // 我现在需要得到这里的oReq.responseText
-            //   //通过回调来获取异步操作结果
-            callback(oReq.responseText)
-        }
-        oReq.open('get', url, true)
-        oReq.send()
-    }
-    //通过回调来获取异步操作结果
-    get('data.json', function (data) {
-        console.log(data)
-    })
-</script>
+        //通过回调来获取异步操作结果
+        get('data.json', function (data) {
+            console.log(data)
+        })
+    </script>
 </body>
+
 </html>

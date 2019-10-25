@@ -50,5 +50,14 @@
         //异步的，读取顺序不一定，文件越大读取速度越慢，越靠后
         //通过回调嵌套的方式来保证顺序
         //回调地狱
-      为了解决以上编码方式带来的问题（回调地狱嵌套）
+      为了解决以上编码方式带来的问题（回调地狱嵌套），所以在EcmaScript6中新增了一个API，Promise
+        Promise的英文就是承诺、保证的意思（i promise you）
 
+      Promise容器中存放了一个异步任务：
+            pending状态（正在进行） -->{ 1.Resolved成功 2.Rejected失败} pending变成其中一种：要么成功要么失败，只能变成其中一种
+
+
+  启动本地json服务器
+      安装json-server
+      使用 json-server --watch db.json
+      网址访问localhost:3000/users/1  // 1表示id
