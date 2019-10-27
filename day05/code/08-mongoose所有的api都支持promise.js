@@ -38,22 +38,22 @@ var User = mongoose.model('User', userSchema);
 
 //************新增************* */
 
-var admin = new User({
-  username: 'admin',
-  password: '123456',
-  emial: 'admin@admin.com',
-});
+// var admin = new User({
+//   username: 'zs',
+//   password: '123456',
+//   emial: 'zs@zs.com',
+// });
 
 // //数据持久化
-admin.save(function (err, ret) {
-  // new User.save(function (err, ret) {
-  if (err) {
-    console.log('保存失败');
-  } else {
-    console.log('保存成功');
-    console.log(ret);
-  }
-});
+// admin.save(function (err, ret) {
+//   // new User.save(function (err, ret) {
+//   if (err) {
+//     console.log('保存失败');
+//   } else {
+//     console.log('保存成功');
+//     console.log(ret);
+//   }
+// });
 
 //************查询************* */
 /*查询所有*/
@@ -64,6 +64,40 @@ admin.save(function (err, ret) {
 //     console.log(ret);
 //   }
 // });
+
+
+//用户注册
+//  1.判断用户是否存在
+//      若已存在,结束注册
+//      若不存在,注册(保存一条用户信息)
+User.find()
+  .then(function (data) {
+    console.log(data)
+  })
+
+User.findOne({
+  username: 'aaa'
+})
+  .then(function (user) {
+    if (user) {
+      //用户已存在,不能注册
+      console.log('用户已存在')
+    } else {
+      //用户不存在,可以注册
+      return new User({
+        username: 'aaa',
+        password: '123',
+        email: 'dasdasd'
+      }).save()
+    }
+  })
+  .then(function (ret) {
+    //注册的结果save()也是promise对象的里面的resolve
+    console.log(ret)
+  })
+
+//凡是操作数据库都是异步
+
 
 /*按条件查所有 */
 // User.find(
@@ -139,7 +173,7 @@ admin.save(function (err, ret) {
 //   {
 //     password: '123',
 //   },
-//   function(err, ret) {
+//   function (err, ret) {
 //     if (err) {
 //       console.log('更新失敗');
 //     } else {

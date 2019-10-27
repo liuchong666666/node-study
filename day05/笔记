@@ -55,6 +55,13 @@
 
       Promise容器中存放了一个异步任务：
             pending状态（正在进行） -->{ 1.Resolved成功 2.Rejected失败} pending变成其中一种：要么成功要么失败，只能变成其中一种
+        容器:
+            *异步任务(pending)
+            *resolve
+            *reject
+          then方法获取容器的结果(成功的,失败的)
+          then方法支持链式调用
+          可以在then方法中返回一个promise对象,然后在后面的then方法中获取上一个then方法的返回的promise对象状态的结果
 
 
   启动本地json服务器

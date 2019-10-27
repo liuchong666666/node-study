@@ -1,0 +1,35 @@
+<!--
+ * @Author: lc
+ * @Date: 2019-10-27 15:12:47
+ * @Description:
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <!-- 给孩子留的样式坑,孩子自己的样式,在哪留,孩子的样式就写在哪,网页查看源代码 -->
+  {{block 'head'}}{{/block}}
+
+</head>
+
+<body>
+  <!-- art-template官方文档 子模板 -->
+  {{ include './header.html'}}
+  <!-- 留一个坑 art-template文档 模板继承 -->
+  {{block 'content'}}
+  <h1>默认内容</h1>
+  {{/block}}
+  {{ include './footer.html'}}
+  <script src='../node_modules/jquery/dist/jquery.js'></script>
+  <script src='../node_modules/bootstrap/dist/js/bootstrap.js'></script>
+  <!-- 给孩子留的脚本坑,孩子自己的脚本-->
+  {{block 'script'}}{{/block}}
+
+</body>
+
+</html>
