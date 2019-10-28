@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 //1.连接本机数据库
 //制定连接的数据库不需要存在，当你插入第一条数据之后就会自动创建出来
-mongoose.connect('mongodb://localhost/itcast');
+mongoose.connect('mongodb://localhost/itcast', { useMongoClient: true });
 
 //2.设计文档（集合）结构
 //字段名称就是表结构中的属性名称
@@ -45,7 +45,7 @@ var admin = new User({
 });
 
 // //数据持久化
-admin.save(function (err, ret) {
+admin.save(function(err, ret) {
   // new User.save(function (err, ret) {
   if (err) {
     console.log('保存失败');
