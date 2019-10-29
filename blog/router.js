@@ -19,7 +19,7 @@ router.get('/register', function (req, res) {
   res.render('register.html');
 });
 //注册请求
-router.post('/register', function (req, res) {
+router.post('/register', async function (req, res) {
   //1.获取表单提交的数据
   //  console.log(req.body);
   //2.操作数据库
@@ -28,6 +28,8 @@ router.post('/register', function (req, res) {
   //    如果不存在，注册新建用户
   //3.发送响应
 
+
+  //使用回调
   var body = req.body;
   User.findOne(
     {
@@ -59,11 +61,21 @@ router.post('/register', function (req, res) {
       if (data) {
         //邮箱或者昵称已存在
         // return res.status(200).send('email or nickname aleary exists');
+
         return res.status(200).json({
           // success: true,
           err_code: 1, //1表示邮箱或者密码已存在
           message: 'email or nickname aleady exist',
         }); //都发json数据
+
+
+        // //github就是这样做的，后台执行重新渲染该页面，填的数据也传过去
+        ////但这样就没前端啥事了，而且交互也不是很好，不能直接操作html的dom
+        // return res.render('register.html', {
+        //   err_message: '邮箱或昵称已存在',
+        //   form: body
+        // })
+
       }
 
       //******对密码进行md5重复加密******
@@ -100,6 +112,43 @@ router.post('/register', function (req, res) {
       // ); //发json格式字符串
     }
   );
+
+
+
+  /*
+
+    //使用async await
+    var body = req.body;
+    try {
+      if (await User.findOne({ email: body.email })) {
+        return res.status(200).json({
+          err_code: 1,
+          message: '邮箱已存在'
+        })
+      }
+      if (await User.findOne({ nickname: body.nickname })) {
+        return res.status(200).json({
+          err_code: 2,
+          message: '昵称已存在'
+        })
+      }
+      //对密码加密
+      body.password = md5(md5(body.password))
+      //创建用户
+      await new User(body).save()
+      res.status(200).json({
+        err_code: 0,
+        message: 'ok'
+      })
+    } catch (err) {
+      res.status(500).json({
+        err_code: 500,
+        message: err.message
+      })
+    }
+
+
+    */
 });
 
 module.exports = router;
