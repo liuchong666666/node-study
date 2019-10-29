@@ -25,6 +25,6 @@ app.use(bodyParser.json());
 //把路由挂载到app中
 app.use(router);
 
-app.listen(5000, function() {
-  console.log('running5000...');
+app.listen(3000, function () {
+  console.log('running3000...');
 });

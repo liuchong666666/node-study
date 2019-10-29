@@ -51,6 +51,7 @@
     $('#register_form').on('submit', function (e) {
       e.preventDefault() //阻止默认事件
       var formData = $(this).serialize() //表单序列化
+      console.log(formData)
       //异步提交
       $.ajax({
         url: '/register',
@@ -58,7 +59,14 @@
         data: formData,
         dataType: 'json',
         success: function (data) {
-          console.log(data)
+          var err_code = data.err_code
+          if (err_code === 0) {
+            window.alert('注册成功！')
+          } else if (err_code === 1) {
+            window.alert('邮箱或昵称已存在！')
+          } else if (err_code === 500) {
+            window.alert('服务器忙，请稍后重试！')
+          }
         }
       })
     })

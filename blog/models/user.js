@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 
+mongoose.Promise = global.Promise;
 //连接数据库
-mongoose.connect('mongodb://localhost/itcast', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/users', { useMongoClient: true });
 
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  eamil: {
+  email: {
     type: String,
     required: true,
   },
@@ -50,6 +51,7 @@ var userSchema = new Schema({
   },
   birthday: {
     type: Date,
+
   },
   status: {
     //状态,拉黑,正常之类的
