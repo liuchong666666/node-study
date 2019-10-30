@@ -66,7 +66,9 @@
         success: function (data) {
           var err_code = data.err_code
           if (err_code === 0) {
-            window.alert('注册成功！')
+            // window.alert('注册成功！')
+            //服务端得重定向针对异步请求无效
+            window.location.href = "/" //这是前端自己重定向
           } else if (err_code === 1) {
             window.alert('邮箱已存在！')
           } else if (err_code === 2) {
