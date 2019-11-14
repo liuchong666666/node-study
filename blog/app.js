@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 //但是我们可以使用第三方中间件：express-session来解决
 //1.npm install express-session
 //2.配置（一定要在app.use(router)之前）
-app.use(session({
+app.use(session({//这里session是一个方法
   secret: 'ahh',//配置加密字符串，会在原有加密基础之上和这个字符串拼起来去加密
   //目的为了增加安全性，防止客户端恶意伪造
   resave: false,
@@ -45,6 +45,20 @@ app.use(session({
 
 //把路由挂载到app中
 app.use(router);
+
+
+//配置一个处理404的中间件
+app.use(function (req, res) {
+  res.render('404.html')
+})
+
+//配置一个全局错误处理的中间件
+app.use(function (err, req, res, next) {
+  res.status(500).json({
+    err_code: 500,
+    message: err.message
+  })
+})
 
 app.listen(3000, function () {
   console.log('running3000...');

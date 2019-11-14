@@ -5,18 +5,18 @@ var md5 = require('blueimp-md5')
 
 var router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/', function (req, res, next) {
   // console.log(req.session)
   res.render('index.html', {
     user: req.session.user
   });
 });
 //登录页面
-router.get('/login', function (req, res) {
+router.get('/login', function (req, res, next) {
   res.render('login.html');
 });
 //登录请求
-router.post('/login', function (req, res) {
+router.post('/login', function (req, res, next) {
   //1.获取表单数据
   //2.查询数据库，用户名密码是否正确
   //3.发送响应数据
@@ -27,10 +27,11 @@ router.post('/login', function (req, res) {
     password: md5(md5(body.password)) //验证密码是否和数据库的一样的，也需要加密对比，因为存入的时候加密是没法反向解密的
   }, function (err, user) {
     if (err) {
-      return res.status(500).json({
-        err_code: 500,
-        message: err.message // err对象有个属性叫message
-      })
+      // return res.status(500).json({
+      //   err_code: 500,
+      //   message: err.message // err对象有个属性叫message
+      // })
+      return next(err)
     }
     //优先处理错误，正确的放最后
     // 如果邮箱和密码匹配，则 user 是查询到的用户对象，否则就是 null
@@ -52,11 +53,11 @@ router.post('/login', function (req, res) {
   })
 });
 //注册页面
-router.get('/register', function (req, res) {
+router.get('/register', function (req, res, next) {
   res.render('register.html');
 });
 //注册请求
-router.post('/register', async function (req, res) {
+router.post('/register', async function (req, res, next) {
   //1.获取表单提交的数据
   //  console.log(req.body);
   //2.操作数据库
@@ -85,11 +86,14 @@ router.post('/register', async function (req, res) {
       if (err) {
         //不能用throw 因为如果保错程序就会整个崩溃全部退出
         // return res.status(500).send('server error');
-        return res.status(500).json({
-          // success: false,//这个只能ture和false没意义
-          err_code: 500, //正常都是0，
-          message: '服务器错误',
-        }); //都发json数据
+
+        // return res.status(500).json({
+        //   // success: false,//这个只能ture和false没意义
+        //   err_code: 500, //正常都是0，
+        //   message: '服务器错误',
+        // }); //都发json数据
+
+        return next(err)
       }
       //如果有数据,就说明邮箱已存在
       // console.log(data);
@@ -122,12 +126,13 @@ router.post('/register', async function (req, res) {
       new User(body).save(function (err, user) {
         //插入一个用户对象（body就是获取到的form表单用户输入的信息）并保存
         if (err) {
-          console.log(err)
-          return res.status(500).json({
-            // success: false,
-            err_code: 500, //正常都是0
-            message: 'Internal error',
-          });
+          // console.log(err)
+          // return res.status(500).json({
+          //   // success: false,
+          //   err_code: 500, //正常都是0
+          //   message: 'Internal error',
+          // });
+          return next(err)
         }
 
 
