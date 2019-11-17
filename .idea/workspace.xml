@@ -84,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/day05/code/mongoose-demo/demo2.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="81">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,9 +93,11 @@
       <file leaf-file-name="01-封装ajax方法.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/day05/code/01-封装ajax方法.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="1053">
+              <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+              <folding>
+                <marker date="1572007392621" expanded="true" signature="1570:1577" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -233,13 +235,15 @@
     <handled-path value="$PROJECT_DIR$/day04/code/crud-express/node_modules" />
     <handled-path value="$PROJECT_DIR$/day04/code/express-demo/node_modules" />
     <handled-path value="$PROJECT_DIR$/day04/code/feedback-express/node_modules" />
+    <handled-path value="$PROJECT_DIR$/day05/code/MySQLdemo/node_modules" />
+    <handled-path value="$PROJECT_DIR$/day05/code/node_modules" />
     <handled-path value="$PROJECT_DIR$/express-demo/node_modules" />
     <handled-path value="$PROJECT_DIR$/feedback-express/node_modules" />
     <handled-path value="$PROJECT_DIR$/feedback/node_modules" />
     <handled-path value="$PROJECT_DIR$/feedback2/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="239" />
     <option name="y" value="20" />
     <option name="width" value="874" />
@@ -261,7 +265,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -291,6 +294,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -383,11 +387,12 @@
       <workItem from="1571747420948" duration="593000" />
       <workItem from="1571922720547" duration="269000" />
       <workItem from="1572007357583" duration="438000" />
+      <workItem from="1573890201569" duration="593000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157239000" />
+    <option name="totallyTimeSpent" value="157832000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -399,10 +404,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="239" y="20" width="874" height="742" extended-state="1" />
-    <editor active="true" />
+    <frame x="239" y="20" width="874" height="742" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36240786" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37100738" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4247934" sideWeight="0.514742" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -735,9 +739,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/day05/code/01-封装ajax方法.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="1053">
+          <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+          <folding>
+            <marker date="1572007392621" expanded="true" signature="1570:1577" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -810,7 +816,7 @@
     <entry file="file://$PROJECT_DIR$/day05/code/mongoose-demo/demo2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
